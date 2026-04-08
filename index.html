@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>陈立言档案馆</title>
-  <meta name="description" content="陈立言档案馆，用于保存孩子成长资料、照片、视频、纪念日和重要人生痕迹的家庭纪念网站。">
+  <meta name="description" content="陈立言档案馆，用于保存孩子成长资料、照片、视频、纪念日和重要人生痕迹。">
   <style>
     :root {
       --bg: #f8f5f1;
       --card: #ffffff;
       --primary: #8c5f3d;
       --primary-dark: #6f482d;
-      --secondary: #d9b8a0;
       --text: #333333;
       --muted: #6b6b6b;
       --line: #eadfd6;
@@ -21,37 +20,17 @@
       --max-width: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(92%, var(--max-width)); margin: 0 auto; }
 
     header {
       position: sticky;
@@ -68,13 +47,13 @@
       justify-content: space-between;
       gap: 20px;
       min-height: 72px;
+      flex-wrap: wrap;
     }
 
     .brand {
       font-size: 24px;
       font-weight: 700;
       color: var(--primary-dark);
-      letter-spacing: 1px;
     }
 
     .nav-links {
@@ -152,18 +131,10 @@
       color: #fff;
     }
 
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
     .btn-secondary {
       background: #fff;
       color: var(--primary-dark);
       border: 1px solid var(--line);
-    }
-
-    .btn-secondary:hover {
-      background: #faf2ec;
     }
 
     .hero-card {
@@ -189,15 +160,7 @@
       font-size: 20px;
     }
 
-    .hero-card-info p {
-      color: var(--muted);
-      margin: 0;
-      font-size: 14px;
-    }
-
-    section {
-      padding: 70px 0;
-    }
+    section { padding: 70px 0; }
 
     .section-head {
       text-align: center;
@@ -295,148 +258,13 @@
       border-radius: 999px;
     }
 
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .media-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid #f3ebe5;
-    }
-
-    .media-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .media-card .content {
+    .status-box {
+      background: #fff;
+      border: 1px dashed #d8c1b1;
       padding: 18px;
-    }
-
-    .media-card h3 {
-      color: var(--primary-dark);
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .media-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .memory-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .memory-item {
-      background: linear-gradient(180deg, #fff8f3 0%, #ffffff 100%);
-      border: 1px solid #f1e2d7;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .memory-item h3 {
-      color: var(--primary-dark);
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .memory-item p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .letter-box {
-      max-width: 900px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, #fff8f2 0%, #ffffff 100%);
-      border: 1px solid #f1dfd0;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .letter-box h3 {
-      color: var(--primary-dark);
-      margin-bottom: 14px;
-      font-size: 24px;
-    }
-
-    .letter-box p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .private-panel {
-      background: linear-gradient(135deg, #7e5538 0%, #62412c 100%);
-      color: #fff;
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .private-panel h3 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .private-panel p {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .private-panel .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .private-panel .btn-secondary:hover {
-      background: rgba(255,255,255,0.16);
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      background: var(--card);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      border: 1px solid #f3ebe5;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 680px;
-    }
-
-    th, td {
-      padding: 16px;
-      text-align: left;
-      border-bottom: 1px solid #f1e7df;
-    }
-
-    th {
-      background: #fcf4ee;
-      color: var(--primary-dark);
-      font-size: 15px;
-    }
-
-    td {
-      color: var(--muted);
-      font-size: 15px;
+      border-radius: 14px;
+      color: #7a5a44;
+      text-align: center;
     }
 
     .footer {
@@ -446,17 +274,9 @@
       border-top: 1px solid var(--line);
     }
 
-    .note {
-      font-size: 13px;
-      color: #888;
-      margin-top: 10px;
-    }
-
     @media (max-width: 980px) {
       .hero-grid,
-      .grid-3,
-      .media-grid,
-      .memory-list {
+      .grid-3 {
         grid-template-columns: 1fr;
       }
 
@@ -470,14 +290,6 @@
     }
 
     @media (max-width: 640px) {
-      .nav {
-        padding: 12px 0;
-      }
-
-      .brand {
-        font-size: 20px;
-      }
-
       .hero {
         padding-top: 48px;
       }
@@ -506,12 +318,9 @@
       <div class="brand">陈立言档案馆</div>
       <nav class="nav-links">
         <a href="#home">首页</a>
+        <a href="#features">核心功能</a>
         <a href="#timeline">成长时间轴</a>
-        <a href="#video">视频记录</a>
-        <a href="#memory">纪念日</a>
-        <a href="#letter">未来信件</a>
-        <a href="#private">家庭空间</a>
-        <a href="#record">成长档案</a>
+        <a href="admin.html">后台管理</a>
       </nav>
     </div>
   </header>
@@ -528,7 +337,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#timeline">查看成长时间轴</a>
-            <a class="btn btn-secondary" href="#letter">阅读未来信件</a>
+            <a class="btn btn-secondary" href="admin.html">进入后台管理</a>
           </div>
         </div>
 
@@ -546,20 +355,20 @@
       <div class="container">
         <div class="section-head">
           <h2>核心功能</h2>
-          <p>用照片、视频、纪念日、信件与档案，把成长过程完整保存下来。</p>
+          <p>前台展示成长内容，后台登录后可持续新增记录。</p>
         </div>
         <div class="grid-3">
           <article class="card">
             <h3>📸 成长时间轴</h3>
-            <p>按年龄阶段保存照片和故事，从 0 岁、1 岁、2 岁到更长远的人生记录，清晰又温暖。</p>
+            <p>自动从 Firebase 读取成长记录，按排序展示。</p>
           </article>
           <article class="card">
-            <h3>🎂 纪念日收藏</h3>
-            <p>保存生日、第一次走路、第一次说话、入学第一天等重要时刻，形成专属记忆地图。</p>
+            <h3>🔐 后台登录</h3>
+            <p>只有管理员可以进入后台，新增成长记录。</p>
           </article>
           <article class="card">
-            <h3>🔒 家庭私密空间</h3>
-            <p>未来可接入登录功能，仅家人可查看，保护成长资料、照片和视频内容的隐私安全。</p>
+            <h3>☁️ 云端存储</h3>
+            <p>内容保存在 Firebase Firestore，前台自动更新。</p>
           </article>
         </div>
       </div>
@@ -569,186 +378,12 @@
       <div class="container">
         <div class="section-head">
           <h2>成长时间轴</h2>
-          <p>按年龄整理重要片段，让每个阶段都有迹可循，也让回忆更有层次。</p>
+          <p>这里的内容会从 Firebase 数据库自动读取。</p>
         </div>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-age">0岁</div>
-            <div class="timeline-content">
-              <h3>出生与初见世界</h3>
-              <p>记录出生第一天、第一次睁眼、第一次被拥抱的时刻，这是人生故事最温柔的开端。</p>
-              <div class="tags">
-                <span class="tag">出生</span>
-                <span class="tag">第一次微笑</span>
-                <span class="tag">家庭合影</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-age">1岁</div>
-            <div class="timeline-content">
-              <h3>学步与探索</h3>
-              <p>第一次站起来，第一次摇摇晃晃地往前走，每一个小小突破都值得被记录。</p>
-              <div class="tags">
-                <span class="tag">第一次走路</span>
-                <span class="tag">1岁生日</span>
-                <span class="tag">成长突破</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-age">2岁</div>
-            <div class="timeline-content">
-              <h3>表达与陪伴</h3>
-              <p>从第一次完整表达，到开始有自己的喜好和个性，成长也在日常里慢慢发光。</p>
-              <div class="tags">
-                <span class="tag">第一次说话</span>
-                <span class="tag">亲子互动</span>
-                <span class="tag">日常故事</span>
-              </div>
-            </div>
-          </article>
+        <div class="timeline" id="timelineList">
+          <div class="status-box">正在加载成长记录...</div>
         </div>
-      </div>
-    </section>
-
-    <section id="video">
-      <div class="container">
-        <div class="section-head">
-          <h2>视频记录馆</h2>
-          <p>照片保存瞬间，视频保存声音、动作和情绪，让回忆更加完整。</p>
-        </div>
-
-        <div class="media-grid">
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1200&q=80" alt="日常视频记录">
-            <div class="content">
-              <h3>日常记录</h3>
-              <p>吃饭、玩耍、睡前故事，这些日常片段会在未来变成最珍贵的回忆。</p>
-            </div>
-          </article>
-
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?auto=format&fit=crop&w=1200&q=80" alt="生日视频记录">
-            <div class="content">
-              <h3>生日时刻</h3>
-              <p>每一年的生日、许愿和笑容，都是值得反复回看的成长纪念。</p>
-            </div>
-          </article>
-
-          <article class="media-card">
-            <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=1200&q=80" alt="学校活动视频记录">
-            <div class="content">
-              <h3>学校活动</h3>
-              <p>从入园到表演、运动会，每一步走向外部世界的勇敢都值得收藏。</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="memory">
-      <div class="container">
-        <div class="section-head">
-          <h2>纪念日中心</h2>
-          <p>把重要节点集中保存，让成长中的里程碑不再零散。</p>
-        </div>
-
-        <div class="memory-list">
-          <article class="memory-item">
-            <h3>🎉 出生纪念日</h3>
-            <p>人生第一天，是所有故事和所有爱的起点。</p>
-          </article>
-          <article class="memory-item">
-            <h3>🚶 第一次走路</h3>
-            <p>迈出的那一步很小，但对家庭来说意义非凡。</p>
-          </article>
-          <article class="memory-item">
-            <h3>🏫 入学第一天</h3>
-            <p>从家庭走向校园，每个新起点都值得郑重记录。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="letter">
-      <div class="container">
-        <div class="section-head">
-          <h2>给未来的信</h2>
-          <p>把现在的爱与期待，写给未来某一天长大的你。</p>
-        </div>
-
-        <div class="letter-box">
-          <h3>写给 18 岁的你</h3>
-          <p>
-            亲爱的立言，当你看到这封信的时候，也许已经长大成人。我们希望你始终记得，
-            你从来到这个世界的那一刻起，就被深深爱着。愿你在未来拥有勇气、善良、自由和热爱，
-            也愿你无论走到哪里，都能记得自己曾被怎样温柔地守护过。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="private">
-      <div class="container">
-        <div class="section-head">
-          <h2>家庭私密空间</h2>
-          <p>这部分可在后续升级为登录后可访问的私密区域，仅家人可查看。</p>
-        </div>
-
-        <div class="private-panel">
-          <div>
-            <h3>仅限家庭成员访问</h3>
-            <p>后续可以接入 GitHub Pages + 第三方表单 / 私密存储 / 登录服务，扩展成真正的家庭专属空间。</p>
-          </div>
-          <button class="btn btn-secondary" onclick="showPrivateTip()">了解后续升级方式</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="record">
-      <div class="container">
-        <div class="section-head">
-          <h2>成长档案</h2>
-          <p>除照片和视频外，也可以保存系统化的成长数据，形成长期档案。</p>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>阶段</th>
-                <th>身高</th>
-                <th>体重</th>
-                <th>重要记录</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>出生</td>
-                <td>50 cm</td>
-                <td>3.2 kg</td>
-                <td>出生纪念照、出生证明</td>
-              </tr>
-              <tr>
-                <td>1岁</td>
-                <td>76 cm</td>
-                <td>9.5 kg</td>
-                <td>第一次走路、1岁生日</td>
-              </tr>
-              <tr>
-                <td>2岁</td>
-                <td>88 cm</td>
-                <td>12 kg</td>
-                <td>开始说完整句子、入园准备</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note">提示：这里的数据可以直接替换成陈立言的真实成长记录。</div>
       </div>
     </section>
   </main>
@@ -759,10 +394,67 @@
     </div>
   </footer>
 
-  <script>
-    function showPrivateTip() {
-      alert("当前 GitHub Pages 版本是静态展示版。后续可以升级登录、照片上传、留言表单、私密访问等功能。");
+  <script type="module">
+    import { db } from "./firebase-config.js";
+    import {
+      collection,
+      getDocs,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const timelineList = document.getElementById("timelineList");
+
+    function escapeHtml(value) {
+      if (value === null || value === undefined) return "";
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
     }
+
+    async function loadTimeline() {
+      timelineList.innerHTML = '<div class="status-box">正在加载成长记录...</div>';
+
+      try {
+        const q = query(collection(db, "timeline"), orderBy("sort", "asc"));
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+          timelineList.innerHTML = '<div class="status-box">暂时还没有成长记录，请先去后台新增内容。</div>';
+          return;
+        }
+
+        timelineList.innerHTML = "";
+
+        snapshot.forEach((docItem) => {
+          const item = docItem.data();
+          const tags = Array.isArray(item.tags) ? item.tags : [];
+
+          const html = `
+            <article class="timeline-item">
+              <div class="timeline-age">${escapeHtml(item.age || "")}</div>
+              <div class="timeline-content">
+                <h3>${escapeHtml(item.title || "")}</h3>
+                <p>${escapeHtml(item.text || "")}</p>
+                <div class="tags">
+                  ${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
+                </div>
+              </div>
+            </article>
+          `;
+
+          timelineList.insertAdjacentHTML("beforeend", html);
+        });
+      } catch (error) {
+        console.error("加载时间轴失败：", error);
+        timelineList.innerHTML = '<div class="status-box">加载失败，请检查 Firebase 配置、数据库权限和字段。</div>';
+      }
+    }
+
+    loadTimeline();
   </script>
 </body>
 </html>
