@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>后台管理 - 陈立言档案馆</title>
+  <style>
+    :root {
+      --bg: #f8f5f1;
+      --card: #ffffff;
+      --primary: #8c5f3d;
+      --primary-dark: #6f482d;
+      --text: #333333;
+      --muted: #6b6b6b;
+      --line: #eadfd6;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --radius: 18px;
+      --max-width: 980px;
+      --danger: #b94a48;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 30px 16px;
+    }
+
+    .wrap {
+      width: min(100%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topbar h1 {
+      font-size: 28px;
+      color: var(--primary-dark);
+    }
+
+    .topbar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
+      border: 1px solid #f3ebe5;
+    }
+
+    .card h2 {
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #684734;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary-dark);
+      border: 1px solid var(--line);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+      width: auto;
+      padding: 10px 14px;
+      margin-bottom: 0;
+    }
+
+    .status {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: -6px;
+      margin-bottom: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .record-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .record-item {
+      border: 1px solid #eee0d5;
+      border-radius: 14px;
+      padding: 16px;
+      background: #fffaf7;
+    }
+
+    .record-item h3 {
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .record-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .record-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      background: #f4e5d9;
+      color: #8b5d3f;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <h1>后台管理</h1>
+      <a href="index.html">返回前台首页</a>
+    </div>
+
+    <div class="card" id="authCard">
+      <h2>管理员登录</h2>
+
+      <label for="email">邮箱</label>
+      <input type="email" id="email" placeholder="请输入管理员邮箱" />
+
+      <label for="password">密码</label>
+      <input type="password" id="password" placeholder="请输入密码" />
+
+      <button class="btn-primary" id="loginBtn">登录</button>
+      <button class="btn-secondary hidden" id="logoutBtn">退出登录</button>
+
+      <div class="status" id="loginStatus">请先登录后台。</div>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+      <div class="card">
+        <h2>新增成长记录</h2>
+
+        <label for="age">年龄</label>
+        <input type="text" id="age" placeholder="例如：0岁 / 1岁 / 2岁" />
+
+        <label for="title">标题</label>
+        <input type="text" id="title" placeholder="例如：第一次走路" />
+
+        <label for="text">内容描述</label>
+        <textarea id="text" placeholder="请输入成长记录内容"></textarea>
+
+        <label for="tags">标签</label>
+        <input type="text" id="tags" placeholder="例如：成长,第一次,学步" />
+
+        <label for="sort">排序</label>
+        <input type="number" id="sort" placeholder="例如：1、2、3" />
+
+        <button class="btn-primary" id="saveTimelineBtn">保存成长记录</button>
+        <div class="status" id="saveStatus"></div>
+      </div>
+
+      <div class="card">
+        <h2>已有成长记录</h2>
+        <div class="record-list" id="recordList">
+          <div class="status">正在加载记录...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import {
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    import {
+      collection,
+      addDoc,
+      getDocs,
+      query,
+      orderBy,
+      deleteDoc,
+      doc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const loginStatus = document.getElementById("loginStatus");
+    const adminPanel = document.getElementById("adminPanel");
+
+    const ageInput = document.getElementById("age");
+    const titleInput = document.getElementById("title");
+    const textInput = document.getElementById("text");
+    const tagsInput = document.getElementById("tags");
+    const sortInput = document.getElementById("sort");
+    const saveTimelineBtn = document.getElementById("saveTimelineBtn");
+    const saveStatus = document.getElementById("saveStatus");
+    const recordList = document.getElementById("recordList");
+
+    function escapeHtml(value) {
+      if (value === null || value === undefined) return "";
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    async function loadRecords() {
+      recordList.innerHTML = '<div class="status">正在加载记录...</div>';
+
+      try {
+        const q = query(collection(db, "timeline"), orderBy("sort", "asc"));
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+          recordList.innerHTML = '<div class="status">还没有任何记录。</div>';
+          return;
+        }
+
+        recordList.innerHTML = "";
+
+        snapshot.forEach((docItem) => {
+          const item = docItem.data();
+          const id = docItem.id;
+          const tags = Array.isArray(item.tags) ? item.tags : [];
+
+          const html = `
+            <div class="record-item">
+              <h3>${escapeHtml(item.title || "未命名记录")}</h3>
+              <div class="record-meta">年龄：${escapeHtml(item.age || "-")} ｜ 排序：${escapeHtml(item.sort ?? "-")}</div>
+              <div class="record-meta">${escapeHtml(item.text || "")}</div>
+              <div class="record-tags">
+                ${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
+              </div>
+              <div class="actions">
+                <button class="btn-danger" data-id="${id}">删除</button>
+              </div>
+            </div>
+          `;
+
+          recordList.insertAdjacentHTML("beforeend", html);
+        });
+
+        bindDeleteButtons();
+      } catch (error) {
+        console.error("加载记录失败：", error);
+        recordList.innerHTML = '<div class="status">加载失败，请检查数据库权限。</div>';
+      }
+    }
+
+    function bindDeleteButtons() {
+      document.querySelectorAll(".btn-danger").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const id = button.getAttribute("data-id");
+          const confirmed = confirm("确认删除这条成长记录吗？");
+          if (!confirmed) return;
+
+          try {
+            await deleteDoc(doc(db, "timeline", id));
+            await loadRecords();
+          } catch (error) {
+            alert("删除失败：" + error.message);
+          }
+        });
+      });
+    }
+
+    function clearForm() {
+      ageInput.value = "";
+      titleInput.value = "";
+      textInput.value = "";
+      tagsInput.value = "";
+      sortInput.value = "";
+    }
+
+    loginBtn.addEventListener("click", async () => {
+      loginStatus.textContent = "登录中...";
+
+      try {
+        await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
+        loginStatus.textContent = "登录成功";
+      } catch (error) {
+        console.error(error);
+        loginStatus.textContent = "登录失败：" + error.message;
+      }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        loginStatus.textContent = "退出失败：" + error.message;
+      }
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        adminPanel.classList.remove("hidden");
+        logoutBtn.classList.remove("hidden");
+        loginBtn.classList.add("hidden");
+        loginStatus.textContent = "当前登录账号：" + user.email;
+        await loadRecords();
+      } else {
+        adminPanel.classList.add("hidden");
+        logoutBtn.classList.add("hidden");
+        loginBtn.classList.remove("hidden");
+        loginStatus.textContent = "请先登录后台。";
+      }
+    });
+
+    saveTimelineBtn.addEventListener("click", async () => {
+      const age = ageInput.value.trim();
+      const title = titleInput.value.trim();
+      const text = textInput.value.trim();
+      const sort = Number(sortInput.value || 0);
+      const tags = tagsInput.value
+        .split(",")
+        .map(item => item.trim())
+        .filter(Boolean);
+
+      if (!age || !title || !text) {
+        saveStatus.textContent = "请至少填写年龄、标题和内容描述。";
+        return;
+      }
+
+      saveStatus.textContent = "保存中...";
+
+      try {
+        await addDoc(collection(db, "timeline"), {
+          age,
+          title,
+          text,
+          tags,
+          sort,
+          createdAt: serverTimestamp()
+        });
+
+        saveStatus.textContent = "保存成功";
+        clearForm();
+        await loadRecords();
+      } catch (error) {
+        console.error(error);
+        saveStatus.textContent = "保存失败：" + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
