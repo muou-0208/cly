@@ -4,12 +4,13 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "你的apiKey",
-  authDomain: "你的项目.firebaseapp.com",
-  projectId: "你的projectId",
-  storageBucket: "你的项目.appspot.com",
-  messagingSenderId: "你的senderId",
-  appId: "你的appId"
+  apiKey: "AIzaSyAN4PYv1nrjtkN85OwY4n4VjjBsQ90PPRI",
+  authDomain: "cly-0208.firebaseapp.com",
+  projectId: "cly-0208",
+  storageBucket: "cly-0208.firebasestorage.app",
+  messagingSenderId: "350193296343",
+  appId: "1:350193296343:web:f505379fcc24d204c0e192",
+  measurementId: "G-TCJNZGQ7WN"
 };
 
 const app = initializeApp(firebaseConfig);
